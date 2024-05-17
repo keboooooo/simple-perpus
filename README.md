@@ -15,6 +15,7 @@ Aplikasi ini merupakan aplikasi manajemen buku perpustakaan yang dapat menyimpan
 - Database disimpan dalam bentuk *.csv* untuk mempermudah pengeditan menggunakan *third party program*
 - Data peminjam sudah terurut berdasarkan waktu pinjam (*menggunakan insertion sort*)
 - Menggunakan hash table untuk pencarian buku agar efisien
+- Cross Platform Ready!
 
 
 ## Installation
