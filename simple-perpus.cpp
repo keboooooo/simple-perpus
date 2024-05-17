@@ -4,9 +4,59 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
-#include <conio.h>
 #include <cstdlib>
-#include <windows.h>
+
+#ifdef _WIN32 // Memeriksa apakah sistem operasi yang digunakan adalah Windows
+#include <windows.h> 
+void delay(int milliseconds) { // Fungsi untuk memberikan delay dalam milidetik
+    Sleep(milliseconds);
+}
+#else
+#include <unistd.h>
+void delay(int milliseconds) {
+    usleep(milliseconds * 1000);
+}
+#endif
+
+#ifdef _WIN32 // Memeriksa apakah sistem operasi yang digunakan adalah Windows
+#include <cstdlib>
+void clearScreen() { // Fungsi untuk membersihkan layar konsol
+    system("cls");
+}
+#else
+#include <cstdio>
+void clearScreen() {
+    system("clear");
+}
+#endif
+
+#ifdef _WIN32
+#include <conio.h>
+#else
+#include <termios.h>
+#include <unistd.h>
+
+char getch() {
+    char buf = 0;
+    struct termios old;
+    fflush(stdout);
+    if (tcgetattr(0, &old) < 0)
+        perror("tcsetattr()");
+    old.c_lflag &= ~ICANON;
+    old.c_lflag &= ~ECHO;
+    old.c_cc[VMIN] = 1;
+    old.c_cc[VTIME] = 0;
+    if (tcsetattr(0, TCSANOW, &old) < 0)
+        perror("tcsetattr ICANON");
+    if (read(0, &buf, 1) < 0)
+        perror("read()");
+    old.c_lflag |= ICANON;
+    old.c_lflag |= ECHO;
+    if (tcsetattr(0, TCSADRAIN, &old) < 0)
+        perror("tcsetattr ~ICANON");
+    return buf;
+}
+#endif
 
 using namespace std;
 
@@ -46,14 +96,14 @@ size_t hashString(const string& str) {
 }
 
 // Fungsi untuk memberikan delay dalam milidetik
-void delay(int milliseconds) {
-    Sleep(milliseconds);
-}
+/*void delay(int milliseconds) {
+//    Sleep(milliseconds);
+//}*/
 
 // Fungsi untuk membersihkan layar konsol
-void clearScreen() {
+/*void clearScreen() {
     system("cls");
-}
+}*/
 
 // Fungsi untuk menginput informasi buku dan memperbarui hash table
 void inputBook(Book books[], int& bookCount, unordered_map<string, vector<int>>& titleIndex, unordered_map<int, int>& idIndex) {
