@@ -95,16 +95,6 @@ size_t hashString(const string& str) {
     return hash;
 }
 
-// Fungsi untuk memberikan delay dalam milidetik
-/*void delay(int milliseconds) {
-//    Sleep(milliseconds);
-//}*/
-
-// Fungsi untuk membersihkan layar konsol
-/*void clearScreen() {
-    system("cls");
-}*/
-
 // Fungsi untuk menginput informasi buku dan memperbarui hash table
 void inputBook(Book books[], int& bookCount, unordered_map<string, vector<int>>& titleIndex, unordered_map<int, int>& idIndex) {
     Book newBook;
