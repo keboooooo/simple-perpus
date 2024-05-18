@@ -30,7 +30,7 @@ void clearScreen() {
 }
 #endif
 
-#ifdef _WIN32
+#ifdef _WIN32 // Memeriksa apakah sistem operasi yang digunakan adalah Windows
 #include <conio.h>
 #else
 #include <termios.h>
@@ -607,7 +607,7 @@ int main() {
 
     do {
         cout << "\n===== APLIKASI MANAJEMEN PERPUSTAKAAN =====\n";
-        cout << "Jumlah Buku: " << bookCount << endl << endl;
+        cout << "Jumlah Buku: " << bookCount << endl << "Jumlah buku yang dipinjam: " << loanCount << endl << endl;
         cout << "1. Tambah Buku Baru\n";
         cout << "2. Cari Buku\n";
         cout << "3. Daftar Buku\n";
