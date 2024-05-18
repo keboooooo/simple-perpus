@@ -19,7 +19,7 @@ Aplikasi ini merupakan aplikasi manajemen buku perpustakaan yang dapat menyimpan
 
 
 ## Installation
-Download melalui [Release](https://github.com/keboooooo/simple-perpus/releases/tag/v1.0.0) atau kamu bisa mengcompilenya sendiri!
+Download melalui [Release](https://github.com/keboooooo/simple-perpus/releases/tag/v1.0.1) atau kamu bisa mengcompilenya sendiri!
 
     
 ## Screenshot
